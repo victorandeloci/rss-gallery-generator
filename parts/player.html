@@ -1,0 +1,32 @@
+<div class="audio-player" id="audio-player">
+  <div class="container">
+    <div id="less-btn" class="btn"><i class="fas fa-undo-alt"></i></div>
+    <div id="play-btn" class="btn play-btn"><i class="fas fa-play" id="play-btn-icon"></i></div>
+    <div id="plus-btn" class="btn"><i class="fas fa-redo-alt"></i></div>
+    <div class="audio-wrapper" id="player-container" href="javascript:;">
+      <audio id="player" ontimeupdate="initProgressBar()" oncanplay="initVolumeBar();" preload="none">
+        <source id="playerSource" src="" type="audio/mp3">
+      </audio>
+    </div>
+    <div class="title-player">
+      <div class="player-controls scrubber">
+        <small id="start-time"></small>
+        <span id="seek-obj-container">
+
+          <progress id="seek-obj" value="0" max="1"></progress>
+
+        </span>
+        <small id="end-time"></small>
+        <span class="divider">|</span>
+        <small class="btn volume-btn"><i id="volume-btn" class="fas fa-volume-up"></i></small>
+        <span id="vol-obj-container">
+          <progress id="vol-obj" value="0" max="1"></progress>
+        </span>
+        <span class="divider">|</span>
+        <a title="Donwload" id="playerPodDownload" class="btn" target="_blank" rel="noreferrer noopener" class="podcast-btn" href="" download>
+      <div class="download-cast"><i class="fas fa-download"></i></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

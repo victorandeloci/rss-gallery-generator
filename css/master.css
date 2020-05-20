@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+*{
+  box-sizing: border-box;
+}
+
+:root{
+  --primaryColor: #ECC200;
+  --textColor: #fff;
+  --backgroundColor: #212121;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  padding: 0;
+  margin: 0;
+  color: var(--textColor);
+  background-color: var(--backgroundColor);
+  overflow-x: hidden;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+  .container{
+    width: 80%;
+    margin: 0 auto;
+  }
+    .column-container{
+      display: flex;
+      margin-top: 2.5rem;
+    }
+      .column-container .column{
+        width: 100%;
+        margin-right: 1rem;
+      }
+      .column-container .first{
+        width: 30%;
+      }
+        .column-container .column img{
+          width: 100%;
+          border-radius: .5rem;
+        }
+        .column-container .column a{
+          color: var(--primaryColor);
+          font-size: 200%;
+        }
+
+  .gallery{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+    .gallery .item{
+      width: 15rem;
+      height: 15rem;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      padding: 1rem;
+      border-radius: .5rem;
+      margin-bottom: 1rem;
+    }
+      .gallery .item .buttons{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition-duration: .2s;
+      }
+        .gallery .item:hover .buttons{
+          z-index: 3;
+          opacity: 1;
+        }
+        .gallery .item .buttons i{
+          cursor: pointer;
+          margin: 0 .5rem;
+          font-size: 200%;
+        }
+        .gallery .item .buttons a{
+          color: var(--textColor);
+          text-decoration: none;
+        }
+      .gallery .item .overlay{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: linear-gradient(to top, #000, transparent);
+        z-index: 1;
+        opacity: 1;
+        transition-duration: .2s;
+        border-radius: .5rem;
+      }
+        .gallery .item:hover .overlay{
+          opacity: 0.7;
+        }
+      .gallery .item .content{
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        transition: .2s;
+        opacity: 1;
+      }
+        .gallery .item:hover .content{
+          opacity: 0;
+        }
+        .gallery .item .content h3{
+          margin: 0;
+        }
+        .gallery .item .content p{
+          margin: 0;
+        }
+        .gallery .item .content span{
+          color: var(--primaryColor);
+        }
+
+@media (max-width: 900px) {
+  .column-container .first{
+    width: 100%;
+  }
+  .gallery .item{
+    width: 18rem;
+    height: 18rem;
+  }
+    .gallery .item .buttons{
+      opacity: 1;
+      z-index: 5;
+    }
+
+  .audio-player{
+    font-size: 150%;
+  }
+    .audio-player .volume-btn,
+    #vol-obj-container,
+    .player-controls .divider{
+      display: none !important;
+    }
+}
+
+@media (max-width: 600px) {
+  .column-container{
+    flex-direction: column;
+  }
+
+  .download-cast,
+  #end-time{
+    display: none !important;
+  }
+    #seek-obj-container{
+      margin-right: 0 !important;
+    }
+}
+
+@media (min-width: 1900px){
+  .container{
+    width: 65%;
+  }
+}
+
+/* ---------- PLAYER STYLE ---------- */
+
+.audio-player {
+	text-align: center;
+	width: 100%;
+	position: fixed;
+	bottom: -5rem;
+	left: 0;
+	background-color: #000;
+	color: #fff;
+	padding: .5rem 0;
+	z-index: 899;
+	-webkit-transition-duration: .2s;
+	-o-transition-duration: .2s;
+	transition-duration: .2s
+}
+
+.player-active {
+	bottom: 0
+}
+
+.audio-player .container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center
+}
+
+.audio-player .container .title-player {
+	width: 100%;
+	padding: .2rem 1rem
+}
+
+.audio-player .container .title-player p {
+	margin: 0
+}
+
+.audio-player .btn{
+  margin: 0 .5rem;
+  cursor: pointer;
+}
+
+.audio-player .btn {
+	background-color: transparent;
+	margin-bottom: 0
+}
+
+.player-controls {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	width: 100%;
+	height: 1rem
+}
+
+#seek-obj-container {
+	width: 100%;
+	margin: 0 1rem;
+	cursor: pointer;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center
+}
+
+.player-controls .divider {
+	margin: 0 1rem
+}
+
+#vol-obj-container {
+	margin: 0 0 0 1rem;
+	cursor: pointer;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center
+}
+  .player-controls a{
+    color: var(--textColor);
+  }
+
+progress {
+	width: 100%;
+	-webkit-appearance: none
+}
+
+progress[value] {
+	background-color: #bbb;
+	color: var(--primaryColor);
+	height: .4rem;
+	min-width: 5rem;
+	border: none
+}
+
+progress[value]::-webkit-progress-bar {
+	background-color: #bbb
+}
+
+::-webkit-progress-value,
+progress::-webkit-progress-value {
+	background-color: var(--primaryColor)
+}

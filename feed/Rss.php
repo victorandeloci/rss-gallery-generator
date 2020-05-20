@@ -9,9 +9,9 @@
     private $feedDesc = 'Feed for the my audio files in some server folder';
     private $feedURL = 'http://www.mysite.com/audio';
     private $explicit = 'NO'; //explicit content?
-    private $coverImg = ''; //cover image src
-    private $copyright = '';
-    private $language = ''; //pt-br, en-us
+    private $coverImg = '//localhost/kaiceph/img/play_cover.png'; //cover image src
+    private $copyright = 'Copyright of feed content';
+    private $language = 'en-us'; //pt-br, en-us
 
     //allowed extensions for audio cover image search
     private $imgExts = ['jpg', 'jpeg', 'png'];
@@ -78,7 +78,7 @@
 
       define( 'ROOT_DIR', dirname(__FILE__) );
 
-      $content = scandir(ROOT_DIR);
+      $content = scandir(ROOT_DIR . '/content/');
 
       if($content){
         foreach ($content as $file) {
@@ -91,7 +91,7 @@
           $ext = pathinfo($file)['extension'];
           if(in_array($ext, $this->allowedExts)){
 
-            $fileInfo = $this->getID3->analyze('./' . $file);
+            $fileInfo = $this->getID3->analyze('./content/' . $file);
 
             $filename = $fileInfo['filename'];
             $format = $fileInfo['fileformat'];
@@ -100,14 +100,14 @@
 
             //search for a item image, based on audio file name
             foreach ($this->imgExts as $imgExt) {
-              if(file_exists('./' . substr_replace($filename , $imgExt, strrpos($filename , '.') + 1))){
+              if(file_exists('./content/' . substr_replace($filename , $imgExt, strrpos($filename , '.') + 1))){
                 $fileCoverImg = substr_replace($filename , $imgExt, strrpos($filename , '.') + 1);
                 break;
               }
             }
 
             if($fileCoverImg)
-              $fileCoverImgSrc = '//' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] . $fileCoverImg;
+              $fileCoverImgSrc = '//' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] . 'content/' . $fileCoverImg;
 
             //check if id3v2 is available
             if($fileInfo['tags']['id3v2'])
@@ -122,7 +122,7 @@
             $track_number = $audioTags['track_number'][0] ?? 'Track Number (?)';
             $year = $audioTags['year'][0] ?? 'Year (?)';
 
-            $fileSrc = '//' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] . $filename;
+            $fileSrc = '//' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] . 'content/' . $filename;
 
             $rss .= '<item>';
             $rss .=   '<title>' . $title . '</title>';

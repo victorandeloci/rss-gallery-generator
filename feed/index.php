@@ -9,8 +9,7 @@
   require_once('Rss.php');
   $rss = new Rss();
 
-  function get_m_time_dir($path)
-  {
+  function get_m_time_dir($path){
     $directory = new RecursiveDirectoryIterator(
       $path,
       FilesystemIterator::KEY_AS_PATHNAME |
@@ -30,7 +29,7 @@
     return $resultFile->getMtime();
   }
 
-  $lastFile = get_m_time_dir('./');
+  $lastFile = get_m_time_dir('./content/');
 
   header('Content-type: text/xml');
 
