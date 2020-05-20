@@ -1,0 +1,3 @@
+[submodule "feed/getID3"]
+	path = feed/getID3
+	url = https://github.com/JamesHeinrich/getID3.git
