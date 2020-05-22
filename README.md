@@ -1,7 +1,7 @@
-![Cover Image](https://i.ibb.co/mhBJRVk/rss-generator.png)
-
 # rss-gallery-generator
 Generate a RSS Feed based on a directory containing audio files and automatically save the XML and display the content found in a page/gallery
+
+![Cover Image](https://i.ibb.co/mhBJRVk/rss-generator.png)
 
 ## Info
 The RSS generator part was created based in this amazing [gist](https://gist.github.com/vsoch/4898025919365bf23b6f)
